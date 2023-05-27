@@ -9,7 +9,7 @@ This is the original pytorch implementation of Structural Federated Learning(SFL
 </p>
 
 ## Requirements
-The model is implemented using Python3 with dependencies specified in requirements.txt
+The model is implemented using Python3.7 with dependencies specified in requirements.txt
 ## Data Preparation
 
 ### Traffic datasets

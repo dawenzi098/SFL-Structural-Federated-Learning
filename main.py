@@ -15,10 +15,17 @@ def main(args):
     args.device = torch.device(args.device)
 
     print("Prepare data and model...")
-    train_batches, test_batches, A, overall_tbatches = load_cifar10(args)
-    model = BResidual(3)
+    if args.dataset == "cifar10":
+        train_batches, test_batches, A, overall_tbatches = load_cifar10(args)
+        model = BResidual(3)
+    elif args.dataset == "mnist":
+        train_batches, test_batches, A, overall_tbatches = load_mnist(args)
+        model = BResidual(1)
+    else:
+        print("Unknown model type ... ")
+        train_batches, test_batches, A, overall_tbatches, model = None
 
-    print("Parameter holders")
+    print("Prepare parameter holders")
     w_server, w_local = model.get_state()
     w_server = [w_server] * args.clients
     w_local = [w_local] * args.clients
